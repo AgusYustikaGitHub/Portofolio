@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header Portfolio - Agus Yustika</title>
+    <!-- Tailwind CSS via CDN -->
+    <link href="./src/output.css" rel="stylesheet" />
+    <!-- FontAwesome for Icons (Optional) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- CDN Alpine.js (Jika belum ada di project-mu) -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <!-- Masukkan link ini di dalam <head> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .font-mono-tech {
+        font-family: "JetBrains Mono", monospace;
+      }
+    </style>
+  </head>
+  <body class="bg-[#0b132b] text-white font-sans">
+    <!-- HEADER / NAVBAR START -->
+    <header
+      id="navbar"
+      class="fixed top-0 left-0 w-full z-50 bg-[#0d1b3e]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300"
+      x-data="{ isOpen: false }"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo / Brand Name -->
+          <div class="flex-shrink-0">
+            <a
+              href="#home"
+              class="nav-link text-2xl sm:text-3xl font-extrabold tracking-wide text-yellow-400 hover:text-yellow-300 transition-colors"
+            >
+              Agus Yustika
+            </a>
+          </div>
+
+          <!-- Desktop Navigation Menu -->
+          <nav class="hidden md:flex items-center space-x-8">
+            <a
+              href="#home"
+              class="nav-link text-base font-bold uppercase tracking-wider text-blue-400 border-b-2 border-blue-400 pb-1 transition-colors"
+              >HOME</a
+            >
+            <a
+              href="#skills"
+              class="nav-link text-base font-bold uppercase tracking-wider text-gray-300 hover:text-white transition-colors"
+              >SKILLS</a
+            >
+            <a
+              href="#certifications"
+              class="nav-link text-base font-bold uppercase tracking-wider text-gray-300 hover:text-white transition-colors"
+              >CERTIFICATIONS</a
+            >
+            <a
+              href="#projects"
+              class="nav-link text-base font-bold uppercase tracking-wider text-gray-300 hover:text-white transition-colors"
+              >PROJECTS</a
+            >
+          </nav>
+
+          <!-- CTA Button (Desktop) -->
+          <div class="hidden md:flex items-center">
+            <a
+              href="#contact"
+              class="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold text-sm uppercase tracking-wider rounded transition-colors duration-200 shadow-md hover:shadow-yellow-400/20"
+            >
+              CONTACT ME
+            </a>
+          </div>
+
+          <!-- Mobile Hamburger Button -->
+          <div class="md:hidden flex items-center">
+            <button
+              @click="isOpen = !isOpen"
+              type="button"
+              class="text-gray-300 hover:text-white focus:outline-none p-2 cursor-pointer z-50"
+              aria-label="Toggle Menu"
+            >
+              <!-- Hamburger Icon (Tampil saat menu tertutup) -->
+              <svg
+                x-show="!isOpen"
+                class="w-7 h-7 pointer-events-none"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+              <!-- Close Icon (Tampil saat menu terbuka) -->
+              <svg
+                x-show="isOpen"
+                class="w-7 h-7 pointer-events-none"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                style="display: none"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Menu (Controlled by Alpine.js) -->
+      <div
+        id="mobile-menu"
+        x-show="isOpen"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 -translate-y-2"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 -translate-y-2"
+        @click.away="isOpen = false"
+        class="md:hidden bg-[#0a1532] border-b border-white/10 px-4 pt-3 pb-6 space-y-4"
+        style="display: none"
+      >
+        <a
+          @click="isOpen = false"
+          href="#home"
+          class="block text-base font-bold uppercase tracking-wider text-blue-400 py-1"
+          >HOME</a
+        >
+        <a
+          @click="isOpen = false"
+          href="#skills"
+          class="block text-base font-bold uppercase tracking-wider text-gray-300 hover:text-white py-1"
+          >SKILLS</a
+        >
+        <a
+          @click="isOpen = false"
+          href="#certifications"
+          class="block text-base font-bold uppercase tracking-wider text-gray-300 hover:text-white py-1"
+          >CERTIFICATIONS</a
+        >
+        <a
+          @click="isOpen = false"
+          href="#projects"
+          class="block text-base font-bold uppercase tracking-wider text-gray-300 hover:text-white py-1"
+          >PROJECTS</a
+        >
+        <a
+          @click="isOpen = false"
+          href="#contact"
+          class="block mt-2 px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold text-sm uppercase tracking-wider rounded transition-colors text-center w-full"
+        >
+          CONTACT ME
+        </a>
+      </div>
+    </header>
+    <!-- HEADER / NAVBAR END -->
+
+    <!-- Placeholder Section untuk melihat efek fixed header saat scroll -->
+    <main class="px-4 text-center">
+      <!-- HERO SECTION START -->
+      <section
+        id="home"
+        class="relative pt-36 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-[#0a1532]"
+      >
+        <!-- Glow Background Decorative Effect -->
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none"
+        ></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <!-- Grid Container (12 Kolom di Desktop) -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 items-center"
+          >
+            <!-- KIRI: Foto Profil (Mengambil 4 dari 12 Kolom) -->
+            <div class="md:col-span-5 lg:col-span-4 flex justify-center">
+              <div class="relative group">
+                <div
+                  class="w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-yellow-400 p-1 bg-gradient-to-b from-yellow-400 to-amber-600 shadow-xl shadow-yellow-500/10 transition-transform duration-300 group-hover:scale-105"
+                >
+                  <img
+                    src="/assets/Pas_Foto.png"
+                    alt="Agus Yustika"
+                    class="w-full h-full object-cover rounded-full bg-slate-800"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- KANAN: Teks Content & Tombol CTA (Mengambil 7 atau 8 dari 12 Kolom) -->
+            <div class="md:col-span-7 lg:col-span-8 text-center md:text-left">
+              <!-- Bagian Hero / Title dengan Alpine.js Typing Effect -->
+              <div>
+                <h1
+                  class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white"
+                >
+                  Hai, Saya <span class="text-yellow-400">Agus Yustika</span>
+                </h1>
+
+                <h2
+                  class="mt-4 text-2xl sm:text-3xl md:text-4xl font-bold text-gray-200"
+                  x-data="typingEffect()"
+                >
+                  Saya seorang
+                  <span
+                    class="text-yellow-400 border-b-2 border-yellow-400"
+                    x-text="text"
+                  ></span>
+                  <span class="animate-pulse">|</span>
+                </h2>
+              </div>
+
+              <!-- Short Biography / Paragraph -->
+              <p
+                class="mt-6 text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed font-normal max-w-3xl"
+              >
+                Web Developer lulusan S1 Sistem Komputer dengan spesialisasi
+                dalam pengembangan aplikasi web modern menggunakan
+                <span class="text-white font-semibold">Laravel</span>,
+                <span class="text-white font-semibold">React.js</span>, dan
+                <span class="text-white font-semibold">MySQL</span>.
+                Berpengalaman dalam merancang serta mengintegrasikan arsitektur
+                frontend, backend, dan database secara end-to-end yang
+                fungsional, responsif, dan terstruktur. Memiliki komitmen tinggi
+                untuk menghadirkan solusi digital yang efisien, aman, dan dapat
+                diandalkan guna mendukung pertumbuhan serta tujuan strategis
+                perusahaan.
+              </p>
+
+              <!-- Call To Action & Social Icons Container -->
+              <div
+                class="mt-9 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-6"
+              >
+                <!-- Download CV Button -->
+                <a
+                  href="/assets/CV Agus Yustika.pdf"
+                  download
+                  class="px-7 py-3.5 bg-yellow-400 hover:bg-yellow-500 text-gray-950 font-bold text-base uppercase tracking-wider rounded transition-all duration-200 shadow-lg shadow-yellow-400/20 hover:scale-105"
+                >
+                  Download CV
+                </a>
+
+                <!-- Social Media Links -->
+                <div
+                  class="flex items-center space-x-6 text-yellow-400 text-2xl sm:text-3xl"
+                >
+                  <a
+                    href="https://www.linkedin.com/in/agus-yustika-prayoga"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-yellow-300 transition-colors transform hover:-translate-y-1 duration-200"
+                    aria-label="LinkedIn"
+                  >
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                  <a
+                    href="https://github.com/AgusYustikaGitHub"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-yellow-300 transition-colors transform hover:-translate-y-1 duration-200"
+                    aria-label="GitHub"
+                  >
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a
+                    href="mailto:agusyustika28@gmail.com"
+                    class="hover:text-yellow-300 transition-colors transform hover:-translate-y-1 duration-200"
+                    aria-label="Email"
+                  >
+                    <i class="fas fa-envelope"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- HERO SECTION END -->
+
+      <!-- MY SKILLS SECTION START (EXTENDED) -->
+      <section
+        id="skills"
+        class="py-8 md:py-12 bg-[#0b132b] relative overflow-hidden"
+      >
+        <!-- Subtle Background Glow -->
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"
+        ></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <!-- Section Header -->
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-8"
+            >
+              My <span class="text-yellow-400">Skills</span>
+            </h2>
+            <p
+              class="mt-4 sm:text-md md:text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto"
+            >
+              Rangkaian teknologi dan tools modern yang dikuasai untuk
+              merancang, mengembangkan, serta mengelola ekosistem aplikasi web
+              full-stack secara end-to-end.
+            </p>
+          </div>
+
+          <!-- Skills Grid Container (16 Cards Full-Stack) -->
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 sm:gap-6"
+          >
+            <!-- Skill 1: Laravel -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-red-500 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fab fa-laravel text-4xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >Laravel</span
+              >
+            </div>
+
+            <!-- Skill 2: React.js -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-cyan-400 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fab fa-react text-4xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >React.js</span
+              >
+            </div>
+
+            <!-- Skill 3: Inertia.js -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-purple-400 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fas fa-layer-group text-3xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >Inertia.js</span
+              >
+            </div>
+
+            <!-- Skill 4: PHP -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-indigo-400 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fab fa-php text-4xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >PHP</span
+              >
+            </div>
+
+            <!-- Skill 5: JavaScript -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-yellow-300 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fab fa-js text-4xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >JavaScript</span
+              >
+            </div>
+
+            <!-- Skill 6: Tailwind CSS -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-teal-400 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fab fa-css3-alt text-4xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >Tailwind CSS</span
+              >
+            </div>
+
+            <!-- Skill 7: MySQL -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-blue-300 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fas fa-database text-3xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >MySQL</span
+              >
+            </div>
+
+            <!-- Skill 8: RESTful API -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-green-400 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fas fa-network-wired text-3xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >RESTful API</span
+              >
+            </div>
+
+            <!-- Skill 9: TypeScript -->
+            <!-- <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-blue-500 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fas fa-code text-3xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >TypeScript</span
+              >
+            </div> -->
+
+            <!-- Skill 10: Vite Build Tool -->
+            <!-- <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-yellow-400 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fas fa-bolt text-3xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >Vite & Bundler</span
+              >
+            </div> -->
+
+            <!-- Skill 11: Eloquent ORM -->
+            <!-- <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-red-400 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fas fa-project-diagram text-3xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >Eloquent ORM</span
+              >
+            </div> -->
+
+            <!-- Skill 12: Alpine.js -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-blue-400 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fas fa-feather-alt text-3xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >Alpine.js</span
+              >
+            </div>
+
+            <!-- Skill 13: Git & GitHub -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-gray-200 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fab fa-github text-4xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >Git / GitHub</span
+              >
+            </div>
+
+            <!-- Skill 14: cPanel & Server -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-orange-500 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fas fa-server text-3xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >cPanel / Server</span
+              >
+            </div>
+
+            <!-- Skill 15: Security & Auth -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-emerald-400 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fas fa-shield-alt text-3xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >Auth & Security</span
+              >
+            </div>
+
+            <!-- Skill 16: Figma -->
+            <div
+              class="bg-[#121c3b] hover:bg-[#1a264d] border border-white/10 hover:border-yellow-400/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 group shadow-lg"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center mb-3 text-pink-400 group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="fab fa-figma text-4xl"></i>
+              </div>
+              <span class="text-white text-sm font-semibold tracking-wide"
+                >Figma</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- MY SKILLS SECTION END -->
+
+      <!-- MY CERTIFICATIONS SECTION START -->
+      <section
+        id="certifications"
+        class="py-8 md:py-12 bg-[#0b132b] relative overflow-hidden"
+      >
+        <!-- Subtle Background Glow -->
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"
+        ></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <!-- Section Header -->
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-8"
+            >
+              My <span class="text-yellow-400">Certifications</span>
+            </h2>
+            <p
+              class="mt-4 text-base sm:text-md md:text-lg text-gray-300 leading-relaxed"
+            >
+              Bukti kompetensi resmi yang telah saya selesaikan dalam dunia
+              teknologi dan pemasaran digital.
+            </p>
+          </div>
+
+          <!-- Certifications Grid Container -->
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          >
+            <!-- Certificate 1: Fundamental Front End Web I -->
+            <div
+              class="bg-[#121c3b] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 group shadow-xl flex flex-col justify-between"
+            >
+              <div>
+                <!-- Image Thumbnail Container -->
+                <div
+                  class="relative overflow-hidden bg-slate-900 aspect-[16/11]"
+                >
+                  <img
+                    src="/assets/Sertifikat/Certificate_Fundamental-Front-End-Web-Development_Agus-Yustika-Prayoga_page-0001.jpg"
+                    alt="Fundamental Front End Web I"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"
+                  ></div>
+                </div>
+                <!-- Certificate Info -->
+                <div class="p-6">
+                  <h3
+                    class="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors duration-200"
+                  >
+                    Fundamental Front End Web I
+                  </h3>
+                  <p
+                    class="mt-2 text-xs font-semibold text-cyan-400 uppercase tracking-wider"
+                  >
+                    Coding Studio
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificate 2: Responsive Web Design -->
+            <div
+              class="bg-[#121c3b] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 group shadow-xl flex flex-col justify-between"
+            >
+              <div>
+                <!-- Image Thumbnail Container -->
+                <div
+                  class="relative overflow-hidden bg-slate-900 aspect-[16/11]"
+                >
+                  <img
+                    src="/assets/Sertifikat/Sertifikat_Free_Code_Academy.png"
+                    alt="Responsive Web Design"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"
+                  ></div>
+                </div>
+                <!-- Certificate Info -->
+                <div class="p-6">
+                  <h3
+                    class="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors duration-200"
+                  >
+                    Responsive Web Design
+                  </h3>
+                  <p
+                    class="mt-2 text-xs font-semibold text-cyan-400 uppercase tracking-wider"
+                  >
+                    Free Code Camp
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificate 3: Laravel Bootcamp -->
+            <div
+              class="bg-[#121c3b] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 group shadow-xl flex flex-col justify-between"
+            >
+              <div>
+                <!-- Image Thumbnail Container -->
+                <div
+                  class="relative overflow-hidden bg-slate-900 aspect-[16/11]"
+                >
+                  <img
+                    src="/assets/Sertifikat/Nusa Code Final Project.jpg"
+                    alt="Laravel Bootcamp"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"
+                  ></div>
+                </div>
+                <!-- Certificate Info -->
+                <div class="p-6">
+                  <h3
+                    class="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors duration-200"
+                  >
+                    Laravel Bootcamp
+                  </h3>
+                  <p
+                    class="mt-2 text-xs font-semibold text-cyan-400 uppercase tracking-wider"
+                  >
+                    Nusa Codes
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificate 4: Fundamental Front End Web II -->
+            <div
+              class="bg-[#121c3b] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 group shadow-xl flex flex-col justify-between"
+            >
+              <div>
+                <!-- Image Thumbnail Container -->
+                <div
+                  class="relative overflow-hidden bg-slate-900 aspect-[16/11]"
+                >
+                  <img
+                    src="/assets/Sertifikat/Sertifikat Fundamental Front-End Web Development II.jpg"
+                    alt="Fundamental Front End Web II"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"
+                  ></div>
+                </div>
+                <!-- Certificate Info -->
+                <div class="p-6">
+                  <h3
+                    class="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors duration-200"
+                  >
+                    Fundamental Front End Web II
+                  </h3>
+                  <p
+                    class="mt-2 text-xs font-semibold text-cyan-400 uppercase tracking-wider"
+                  >
+                    Coding Studio
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificate 5: Digital Marketing Bootcamp -->
+            <div
+              class="bg-[#121c3b] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 group shadow-xl flex flex-col justify-between"
+            >
+              <div>
+                <!-- Image Thumbnail Container -->
+                <div
+                  class="relative overflow-hidden bg-slate-900 aspect-[16/11]"
+                >
+                  <img
+                    src="/assets/Sertifikat/Sertifikat_Digital_Marketing.jpg"
+                    alt="Digital Marketing Bootcamp"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"
+                  ></div>
+                </div>
+                <!-- Certificate Info -->
+                <div class="p-6">
+                  <h3
+                    class="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors duration-200"
+                  >
+                    Digital Marketing Bootcamp
+                  </h3>
+                  <p
+                    class="mt-2 text-xs font-semibold text-cyan-400 uppercase tracking-wider"
+                  >
+                    MySkill
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- MY CERTIFICATIONS SECTION END -->
+
+      <!-- MY PROJECTS SECTION START -->
+      <section
+        id="projects"
+        class="py-8 md:py-12 bg-[#0b132b] relative overflow-hidden"
+      >
+        <!-- Subtle Background Glow -->
+        <div
+          class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"
+        ></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <!-- Section Header -->
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-8"
+            >
+              My <span class="text-yellow-400">Projects</span>
+            </h2>
+            <p class="mt-4 sm:text-md md:text-lg text-gray-300 leading-relaxed">
+              Kumpulan proyek terbaik yang saya kembangkan menggunakan kombinasi
+              teknologi modern, desain responsif, dan strategi digital efektif.
+            </p>
+          </div>
+
+          <!-- Filter Buttons Container -->
+          <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
+            <button
+              class="filter-btn active px-4 py-2 rounded-full border border-yellow-400 bg-yellow-400 text-gray-950 font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md cursor-pointer"
+              data-filter="all"
+            >
+              All
+            </button>
+            <button
+              class="filter-btn px-4 py-2 rounded-full border border-white/20 hover:border-yellow-400 bg-[#121c3b] hover:bg-[#1a264d] text-gray-300 hover:text-white font-medium text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer"
+              data-filter="landing-page"
+            >
+              Landing Page
+            </button>
+            <button
+              class="filter-btn px-4 py-2 rounded-full border border-white/20 hover:border-yellow-400 bg-[#121c3b] hover:bg-[#1a264d] text-gray-300 hover:text-white font-medium text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer"
+              data-filter="company-profile"
+            >
+              Company Profile Website
+            </button>
+            <button
+              class="filter-btn px-4 py-2 rounded-full border border-white/20 hover:border-yellow-400 bg-[#121c3b] hover:bg-[#1a264d] text-gray-300 hover:text-white font-medium text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer"
+              data-filter="sistem-informasi"
+            >
+              Sistem Informasi (Web-Based Application)
+            </button>
+            <button
+              class="filter-btn px-4 py-2 rounded-full border border-white/20 hover:border-yellow-400 bg-[#121c3b] hover:bg-[#1a264d] text-gray-300 hover:text-white font-medium text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer"
+              data-filter="e-commerce"
+            >
+              E-Commerce
+            </button>
+            <button
+              class="filter-btn px-4 py-2 rounded-full border border-white/20 hover:border-yellow-400 bg-[#121c3b] hover:bg-[#1a264d] text-gray-300 hover:text-white font-medium text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer"
+              data-filter="custom-app"
+            >
+              Custom Web Application
+            </button>
+          </div>
+
+          <!-- Projects Grid Container -->
+          <div
+            id="projects-container"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 text-start"
+          >
+            <!-- Sistem Management Restaurant Azura Bites -->
+            <div
+              class="project-card bg-[#121c3b] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 group shadow-xl flex flex-col justify-between"
+              data-category="sistem-informasi"
+            >
+              <div>
+                <!-- Thumbnail -->
+                <div
+                  class="relative overflow-hidden bg-slate-900 aspect-[16/10]"
+                >
+                  <img
+                    src="/assets/Project/azura_bites.png"
+                    alt="Sistem Management Restaurant Azura Bites"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"
+                  ></div>
+                </div>
+                <!-- Content -->
+                <div class="p-6">
+                  <h3 class="text-lg font-bold text-yellow-400 leading-snug">
+                    Sistem Management Restaurant Azura Bites
+                  </h3>
+                  <p
+                    class="mt-3 text-xs sm:text-sm text-gray-300 leading-relaxed"
+                  >
+                    Platform manajemen restoran berbasis web yang dirancang
+                    untuk mengoptimalkan operasional harian, mulai dari
+                    manajemen pemesanan meja, pengelolaan menu interaktif,
+                    hingga analitik penjualan bisnis secara real-time.
+                    Dilengkapi dengan fitur QR Code generator dan database
+                    pelanggan untuk meningkatkan efisiensi layanan restoran.
+                  </p>
+                  <!-- Tech Badges -->
+                  <div class="mt-4 flex flex-wrap gap-1.5">
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >Laravel</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >Tailwind CSS</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >JavaScript</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >MySQL</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Action Buttons -->
+              <div class="p-6 pt-0 flex items-center justify-between gap-4">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  class="px-4 py-2 border border-blue-400/50 hover:border-blue-400 text-blue-300 hover:text-white rounded text-xs font-bold transition-colors"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  class="px-5 py-2 bg-yellow-400 hover:bg-yellow-500 text-gray-950 rounded text-xs font-bold transition-colors shadow-md"
+                >
+                  Demo
+                </a>
+              </div>
+            </div>
+
+            <!-- Sistem Informasi & Pemesanan Yustika Trans -->
+            <div
+              class="project-card bg-[#121c3b] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 group shadow-xl flex flex-col justify-between"
+              data-category="sistem-informasi"
+            >
+              <div>
+                <!-- Thumbnail -->
+                <div
+                  class="relative overflow-hidden bg-slate-900 aspect-[16/10]"
+                >
+                  <img
+                    src="/assets/Project/yustika-trans.png"
+                    alt="Sistem Informasi & Pemesanan Yustika Trans"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"
+                  ></div>
+                </div>
+                <!-- Content -->
+                <div class="p-6">
+                  <h3 class="text-lg font-bold text-yellow-400 leading-snug">
+                    Sistem Informasi & Pemesanan Yustika Trans
+                  </h3>
+                  <p
+                    class="mt-3 text-xs sm:text-sm text-gray-300 leading-relaxed"
+                  >
+                    Dirancang untuk memudahkan pelanggan dalam mencari, memilih,
+                    dan melakukan booking paket wisata secara online. Dilengkapi
+                    dashboard admin untuk mengelola paket, aktivitas,
+                    transportasi, serta testimoni, sistem ini membantu
+                    meningkatkan efisiensi operasional perusahaan travel.
+                  </p>
+                  <!-- Tech Badges -->
+                  <div class="mt-4 flex flex-wrap gap-1.5">
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >Tailwind CSS</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >Laravel</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >Alpine JS</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >MySQL</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Action Buttons -->
+              <div class="p-6 pt-0 flex items-center justify-between gap-4">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  class="px-4 py-2 border border-blue-400/50 hover:border-blue-400 text-blue-300 hover:text-white rounded text-xs font-bold transition-colors"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://www.baliyustikatrans.com/"
+                  target="_blank"
+                  class="px-5 py-2 bg-yellow-400 hover:bg-yellow-500 text-gray-950 rounded text-xs font-bold transition-colors shadow-md"
+                >
+                  Demo
+                </a>
+              </div>
+            </div>
+
+            <!-- Productivity Web App -->
+            <div
+              class="project-card bg-[#121c3b] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 group shadow-xl flex flex-col justify-between"
+              data-category="custom-app"
+            >
+              <div>
+                <!-- Thumbnail -->
+                <div
+                  class="relative overflow-hidden bg-slate-900 aspect-[16/10]"
+                >
+                  <img
+                    src="/assets/Project/productivity.png"
+                    alt="Productivity Web App"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"
+                  ></div>
+                </div>
+                <!-- Content -->
+                <div class="p-6">
+                  <h3 class="text-lg font-bold text-yellow-400 leading-snug">
+                    Productivity Web App
+                  </h3>
+                  <p
+                    class="mt-3 text-xs sm:text-sm text-gray-300 leading-relaxed"
+                  >
+                    Aplikasi produktivitas berbasis web yang dirancang untuk
+                    membantu pengguna mengelola aktivitas harian secara
+                    terstruktur dan efisien. Fitur utama meliputi task manager,
+                    habit tracker, goal tracking, kalender manager, time
+                    tracker, serta daily journal. Antarmuka dirancang dengan
+                    tampilan yang bersih, modern, dan intuitif.
+                  </p>
+                  <!-- Tech Badges -->
+                  <div class="mt-4 flex flex-wrap gap-1.5">
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >Tailwind CSS</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >JavaScript</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >GitHub</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Action Buttons -->
+              <div class="p-6 pt-0 flex items-center justify-between gap-4">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  class="px-4 py-2 border border-blue-400/50 hover:border-blue-400 text-blue-300 hover:text-white rounded text-xs font-bold transition-colors"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  class="px-5 py-2 bg-yellow-400 hover:bg-yellow-500 text-gray-950 rounded text-xs font-bold transition-colors shadow-md"
+                >
+                  Demo
+                </a>
+              </div>
+            </div>
+
+            <!-- MuscleForge Fitness Website -->
+            <div
+              class="project-card bg-[#121c3b] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 group shadow-xl flex flex-col justify-between"
+              data-category="company-profile"
+            >
+              <div>
+                <!-- Thumbnail -->
+                <div
+                  class="relative overflow-hidden bg-slate-900 aspect-[16/10]"
+                >
+                  <img
+                    src="/assets/Project/gym-website.png"
+                    alt="MuscleForge Fitness Website"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"
+                  ></div>
+                </div>
+                <!-- Content -->
+                <div class="p-6">
+                  <h3 class="text-lg font-bold text-yellow-400 leading-snug">
+                    MuscleForge Fitness Website
+                  </h3>
+                  <p
+                    class="mt-3 text-xs sm:text-sm text-gray-300 leading-relaxed"
+                  >
+                    Landing page modern untuk menghadirkan semua informasi
+                    penting seperti fasilitas gym, kelas olahraga, hingga
+                    testimoni member disusun dalam satu halaman untuk pengalaman
+                    yang lebih cepat dan praktis. Navigasi yang sederhana
+                    memudahkan pengunjung berpindah antar-section.
+                  </p>
+                  <!-- Tech Badges -->
+                  <div class="mt-4 flex flex-wrap gap-1.5">
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >HTML</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >Tailwind CSS</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >JavaScript</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Action Buttons -->
+              <div class="p-6 pt-0 flex items-center justify-between gap-4">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  class="px-4 py-2 border border-blue-400/50 hover:border-blue-400 text-blue-300 hover:text-white rounded text-xs font-bold transition-colors"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  class="px-5 py-2 bg-yellow-400 hover:bg-yellow-500 text-gray-950 rounded text-xs font-bold transition-colors shadow-md"
+                >
+                  Demo
+                </a>
+              </div>
+            </div>
+
+            <!-- FlavourRetreat Restaurant Website -->
+            <div
+              class="project-card bg-[#121c3b] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 group shadow-xl flex flex-col justify-between"
+              data-category="landing-page"
+            >
+              <div>
+                <!-- Thumbnail -->
+                <div
+                  class="relative overflow-hidden bg-slate-900 aspect-[16/10]"
+                >
+                  <img
+                    src="/assets/Project/restaurant-website.png"
+                    alt="FlavourRetreat Restaurant Website"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"
+                  ></div>
+                </div>
+                <!-- Content -->
+                <div class="p-6">
+                  <h3 class="text-lg font-bold text-yellow-400 leading-snug">
+                    FlavourRetreat Restaurant Website
+                  </h3>
+                  <p
+                    class="mt-3 text-xs sm:text-sm text-gray-300 leading-relaxed"
+                  >
+                    Dirancang untuk memberikan pengalaman digital premium bagi
+                    para pecinta kuliner. FlavourRetreat menghadirkan navigasi
+                    responsif, hero section yang memukau, showcase menu
+                    unggulan, hingga testimoni pelanggan. Setiap elemen dibuat
+                    untuk mendorong pengguna melakukan reservasi.
+                  </p>
+                  <!-- Tech Badges -->
+                  <div class="mt-4 flex flex-wrap gap-1.5">
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >HTML</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >Tailwind CSS</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >JavaScript</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Action Buttons -->
+              <div class="p-6 pt-0 flex items-center justify-between gap-4">
+                <a
+                  href="https://github.com/AgusYustikaGitHub/Restaurant-Website"
+                  target="_blank"
+                  class="px-4 py-2 border border-blue-400/50 hover:border-blue-400 text-blue-300 hover:text-white rounded text-xs font-bold transition-colors"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  class="px-5 py-2 bg-yellow-400 hover:bg-yellow-500 text-gray-950 rounded text-xs font-bold transition-colors shadow-md"
+                >
+                  Demo
+                </a>
+              </div>
+            </div>
+
+            <!-- CoffeeConnect Website -->
+            <div
+              class="project-card bg-[#121c3b] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 group shadow-xl flex flex-col justify-between"
+              data-category="landing-page"
+            >
+              <div>
+                <!-- Thumbnail -->
+                <div
+                  class="relative overflow-hidden bg-slate-900 aspect-[16/10]"
+                >
+                  <img
+                    src="/assets/Project/coffee-website.png"
+                    alt="CoffeeConnect Website"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"
+                  ></div>
+                </div>
+                <!-- Content -->
+                <div class="p-6">
+                  <h3 class="text-lg font-bold text-yellow-400 leading-snug">
+                    CoffeeConnect Website
+                  </h3>
+                  <p
+                    class="mt-3 text-xs sm:text-sm text-gray-300 leading-relaxed"
+                  >
+                    Landing page modern untuk menghadirkan pengalaman digital
+                    coffee shop dengan nuansa hangat, responsif, dan nyaman.
+                    CoffeeConnect menyajikan navigasi sederhana, hero section
+                    menarik, menu kopi populer, serta testimoni pelanggan.
+                  </p>
+                  <!-- Tech Badges -->
+                  <div class="mt-4 flex flex-wrap gap-1.5">
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >HTML</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >Tailwind CSS</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 text-[10px] font-semibold"
+                      >JavaScript</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Action Buttons -->
+              <div class="p-6 pt-0 flex items-center justify-between gap-4">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  class="px-4 py-2 border border-blue-400/50 hover:border-blue-400 text-blue-300 hover:text-white rounded text-xs font-bold transition-colors"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  class="px-5 py-2 bg-yellow-400 hover:bg-yellow-500 text-gray-950 rounded text-xs font-bold transition-colors shadow-md"
+                >
+                  Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty State / Notice Container (Hidden by Default) -->
+          <div
+            id="no-projects-notice"
+            class="hidden flex-col items-center justify-center text-center py-16 px-4 rounded-2xl max-w-xl mx-auto my-6"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-yellow-400/10 text-yellow-400 flex items-center justify-center mb-4 text-2xl"
+            >
+              <i class="fas fa-folder-open"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Belum Ada Proyek</h3>
+            <p class="text-sm text-gray-400 max-w-md leading-relaxed">
+              Saat ini belum ada proyek yang ditampilkan untuk kategori ini.
+              Proyek baru akan segera diperbarui.
+            </p>
+          </div>
+
+          <!-- See All Projects Button -->
+          <div class="mt-14 text-center">
+            <a
+              href="#"
+              class="inline-block px-8 py-3 rounded-full border border-yellow-400/60 hover:border-yellow-400 bg-transparent hover:bg-yellow-400/10 text-yellow-400 font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg"
+            >
+              See All Projects
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- MY PROJECTS SECTION END -->
+
+      <!-- CONTACT & CTA SECTION START (SINGLE CARD) -->
+      <section
+        id="contact"
+        class="py-8 md:py-12 bg-[#0b132b] relative overflow-hidden"
+      >
+        <!-- Subtle Background Glow Effect -->
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"
+        ></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <!-- Single Unified CTA Banner Card -->
+          <div
+            class="bg-[#121c3b] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden text-center"
+          >
+            <!-- Subtle Decorative Background Icon -->
+            <div
+              class="absolute -right-10 -bottom-10 text-white/5 text-9xl pointer-events-none hidden sm:block"
+            >
+              <i class="fas fa-paper-plane"></i>
+            </div>
+
+            <!-- Tagline / Badge -->
+            <span
+              class="px-3.5 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 font-semibold text-xs tracking-wider uppercase inline-block mb-4"
+            >
+              Let's Work Together
+            </span>
+
+            <!-- Main Headline -->
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight max-w-3xl mx-auto"
+            >
+              Siap Bekerja Sama atau Membangun Proyek Anda?
+            </h2>
+
+            <!-- Subtitle Description -->
+            <p
+              class="mt-4 text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl mx-auto"
+            >
+              Apakah Anda sedang mencari
+              <span class="text-white font-semibold"
+                >Full-Stack Web Developer</span
+              >
+              untuk tim Anda atau membutuhkan jasa pembuatan website profesional
+              (Custom Web App, Sistem Informasi, Company Profile)? Saya siap
+              membantu.
+            </p>
+
+            <!-- Action Buttons Grid (WhatsApp, Download CV, Email) -->
+            <div
+              class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-2xl mx-auto"
+            >
+              <!-- Primary Button: WhatsApp (Freelance / Direct Discussion) -->
+              <a
+                href="https://wa.me/628977336930?text=Halo%20Agus%20Yustika,%20saya%20tertarik%20untuk%20berdiskusi%20mengenai%20proyek%20atau%20peluang%20kerja%20sama."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto flex-1 py-3.5 px-6 bg-emerald-500 hover:bg-emerald-600 text-gray-950 font-bold text-xs uppercase tracking-wider rounded-xl transition-all duration-200 text-center shadow-lg shadow-emerald-500/20 hover:scale-[1.02] flex items-center justify-center space-x-2"
+              >
+                <i class="fab fa-whatsapp text-lg"></i>
+                <span>Diskusi via WhatsApp</span>
+              </a>
+
+              <!-- Secondary Button: Download CV (Recruitment) -->
+              <a
+                href="/assets/CV Agus Yustika.pdf"
+                download
+                class="w-full sm:w-auto flex-1 py-3.5 px-6 bg-yellow-400 hover:bg-yellow-500 text-gray-950 font-bold text-xs uppercase tracking-wider rounded-xl transition-all duration-200 text-center shadow-md hover:scale-[1.02] flex items-center justify-center space-x-2"
+              >
+                <i class="fas fa-download"></i>
+                <span>Download CV</span>
+              </a>
+
+              <!-- Tertiary Button: Email Resume -->
+              <!-- <a
+                href="mailto:yustikaagus0@gmail.com?subject=Penawaran%20Kerja%20/%20Diskusi%20Proyek"
+                class="w-full sm:w-auto py-3.5 px-5 border border-white/20 hover:border-yellow-400 bg-[#0d152f] text-gray-300 hover:text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all duration-200 text-center flex items-center justify-center space-x-2"
+                aria-label="Kirim Email"
+              >
+                <i class="fas fa-envelope text-yellow-400 text-base"></i>
+                <span class="sm:hidden">Kirim Email</span>
+              </a> -->
+            </div>
+
+            <!-- Divider -->
+            <div class="my-8 border-t border-white/10 max-w-xl mx-auto"></div>
+
+            <!-- Bottom Strip Info & Social Links -->
+            <div
+              class="flex flex-col sm:flex-row items-center justify-between gap-4 text-md text-gray-300 max-w-3xl mx-auto"
+            >
+              <div class="flex flex-wrap items-center justify-center gap-3">
+                <span class="flex items-center space-x-2">
+                  <i class="fas fa-map-marker-alt text-yellow-400"></i>
+                  <span>Denpasar, Bali, Indonesia</span>
+                </span>
+                <span class="hidden sm:inline text-gray-600">•</span>
+                <span class="flex items-center space-x-2">
+                  <i
+                    class="fas fa-circle text-emerald-400 text-[8px] animate-pulse"
+                  ></i>
+                  <span class="text-gray-200 font-medium"
+                    >Open for Opportunities & Projects</span
+                  >
+                </span>
+              </div>
+
+              <!-- Social Professional Links -->
+              <div class="flex items-center space-x-3">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-10 h-10 rounded-lg bg-[#0d152f] hover:bg-yellow-400 text-yellow-400 hover:text-gray-950 flex items-center justify-center text-xs transition-all duration-200 border border-white/10"
+                  aria-label="LinkedIn"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="https://github.com/AgusYustikaGitHub"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-10 h-10 rounded-lg bg-[#0d152f] hover:bg-yellow-400 text-yellow-400 hover:text-gray-950 flex items-center justify-center text-xs transition-all duration-200 border border-white/10"
+                  aria-label="GitHub"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="mailto:yustikaagus0@gmail.com"
+                  class="w-10 h-10 rounded-lg bg-[#0d152f] hover:bg-yellow-400 text-yellow-400 hover:text-gray-950 flex items-center justify-center text-xs transition-all duration-200 border border-white/10"
+                  aria-label="Email"
+                >
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- CONTACT & CTA SECTION END -->
+
+      <!-- FOOTER SECTION START -->
+      <footer
+        class="bg-[#080e22] border-t border-white/10 relative overflow-hidden text-gray-300 text-start"
+      >
+        <!-- Main Footer Content -->
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative z-10"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+            <!-- Column 1: Brand & Bio (5 Columns) -->
+            <div class="md:col-span-5 space-y-4">
+              <a
+                href="#home"
+                class="text-2xl font-extrabold text-yellow-400 tracking-wide hover:text-yellow-300 transition-colors inline-block"
+              >
+                Agus Yustika
+              </a>
+              <p
+                class="sm:text-md md:text-lg text-gray-400 leading-relaxed max-w-sm"
+              >
+                Full-Stack Web Developer yang berfokus pada pengembangan
+                aplikasi web modern, responsif, dan terstruktur menggunakan
+                Laravel, React.js, Tailwind CSS, dan MySQL.
+              </p>
+              <!-- Status Indicator -->
+              <div class="pt-2 flex items-center space-x-2 text-md">
+                <span
+                  class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"
+                ></span>
+                <span class="text-gray-300 font-medium"
+                  >Available for Hire & Freelance Projects</span
+                >
+              </div>
+            </div>
+
+            <!-- Column 2: Quick Links (3 Columns) -->
+            <div class="md:col-span-3 space-y-4">
+              <h3
+                class="text-lg font-bold uppercase tracking-wider text-white border-l-2 border-yellow-400 pl-2"
+              >
+                Navigation
+              </h3>
+              <ul class="space-y-2.5 sm:text-sm md:text-lg">
+                <li>
+                  <a
+                    href="#home"
+                    class="hover:text-yellow-400 transition-colors flex items-center space-x-2"
+                  >
+                    <i
+                      class="fas fa-chevron-right text-[10px] text-yellow-400"
+                    ></i>
+                    <span>Home</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#skills"
+                    class="hover:text-yellow-400 transition-colors flex items-center space-x-2"
+                  >
+                    <i
+                      class="fas fa-chevron-right text-[10px] text-yellow-400"
+                    ></i>
+                    <span>Skills</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#certifications"
+                    class="hover:text-yellow-400 transition-colors flex items-center space-x-2"
+                  >
+                    <i
+                      class="fas fa-chevron-right text-[10px] text-yellow-400"
+                    ></i>
+                    <span>Certifications</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#projects"
+                    class="hover:text-yellow-400 transition-colors flex items-center space-x-2"
+                  >
+                    <i
+                      class="fas fa-chevron-right text-[10px] text-yellow-400"
+                    ></i>
+                    <span>Projects</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Column 3: Contact & Socials (4 Columns) -->
+            <div class="md:col-span-4 space-y-4">
+              <h3
+                class="sm:text-md md:text-lg font-bold uppercase tracking-wider text-white border-l-4 border-yellow-400 pl-3"
+              >
+                Connect
+              </h3>
+
+              <ul
+                class="space-y-3 text-base sm:text-md md:text-lg text-gray-300"
+              >
+                <li class="flex items-center space-x-3">
+                  <i
+                    class="fas fa-envelope text-yellow-400 text-xl w-5 flex-shrink-0"
+                  ></i>
+                  <a
+                    href="mailto:agusyustika28@gmail.com"
+                    class="hover:text-white transition-colors"
+                    >agusyustika28@gmail.com</a
+                  >
+                </li>
+                <li class="flex items-center space-x-3">
+                  <i
+                    class="fab fa-whatsapp text-emerald-400 text-xl w-5 flex-shrink-0"
+                  ></i>
+                  <a
+                    href="https://wa.me/628977336930"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-white transition-colors"
+                    >+62 89 773 369 30</a
+                  >
+                </li>
+                <li class="flex items-center space-x-3">
+                  <i
+                    class="fas fa-map-marker-alt text-yellow-400 text-xl w-5 flex-shrink-0"
+                  ></i>
+                  <span>Denpasar, Bali, Indonesia</span>
+                </li>
+              </ul>
+
+              <!-- Social Icons Row -->
+              <div class="pt-3 flex items-center space-x-3">
+                <a
+                  href="https://www.linkedin.com/in/agus-yustika-prayoga"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-15 h-15 rounded-lg bg-[#121c3b] hover:bg-yellow-400 text-yellow-400 hover:text-gray-950 flex items-center justify-center text-base transition-all border border-white/10"
+                  aria-label="LinkedIn"
+                >
+                  <i class="fab fa-linkedin-in text-lg"></i>
+                </a>
+                <a
+                  href="https://github.com/AgusYustikaGitHub"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-15 h-15 rounded-lg bg-[#121c3b] hover:bg-yellow-400 text-yellow-400 hover:text-gray-950 flex items-center justify-center text-base transition-all border border-white/10"
+                  aria-label="GitHub"
+                >
+                  <i class="fab fa-github text-lg"></i>
+                </a>
+                <a
+                  href="mailto:agusyustika28@gmail.com"
+                  class="w-15 h-15 rounded-lg bg-[#121c3b] hover:bg-yellow-400 text-yellow-400 hover:text-gray-950 flex items-center justify-center text-base transition-all border border-white/10"
+                  aria-label="Email"
+                >
+                  <i class="fas fa-envelope text-lg"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Copyright Divider & Text -->
+          <div
+            class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-md text-gray-500"
+          >
+            <p>
+              &copy; 2025
+              <span class="text-gray-300 font-semibold"> Agus Yustika</span>.
+              All rights reserved.
+            </p>
+            <!-- <p class="flex items-center space-x-1">
+              <span>Designed & Built with</span>
+              <i class="fas fa-heart text-red-500 text-[10px]"></i>
+              <span>using Tailwind CSS</span>
+            </p> -->
+          </div>
+        </div>
+      </footer>
+      <!-- FOOTER SECTION END -->
+    </main>
+
+    <!-- JAVASCRIPT FOR MOBILE MENU TOGGLE -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 1. SCROLLSPY (Active State Link on Scroll)
+        const sections = document.querySelectorAll("section[id]");
+        const desktopNavLinks = document.querySelectorAll("nav .nav-link");
+        const mobileLinks = document.querySelectorAll(
+          "#mobile-menu a[href^='#']"
+        );
+
+        function highlightNavOnScroll() {
+          const scrollY = window.pageYOffset;
+
+          sections.forEach((current) => {
+            const sectionHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop - 100;
+            const sectionId = current.getAttribute("id");
+
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+              // Highlight Desktop Links
+              desktopNavLinks.forEach((link) => {
+                if (link.getAttribute("href") === `#${sectionId}`) {
+                  link.classList.add(
+                    "text-blue-400",
+                    "border-b-2",
+                    "border-blue-400",
+                    "pb-1"
+                  );
+                  link.classList.remove("text-gray-300");
+                } else {
+                  link.classList.remove(
+                    "text-blue-400",
+                    "border-b-2",
+                    "border-blue-400",
+                    "pb-1"
+                  );
+                  link.classList.add("text-gray-300");
+                }
+              });
+
+              // Highlight Mobile Links
+              mobileLinks.forEach((link) => {
+                if (
+                  link.getAttribute("href") === `#${sectionId}` &&
+                  !link.classList.contains("bg-yellow-400")
+                ) {
+                  link.classList.add(
+                    "text-blue-400",
+                    "border-b",
+                    "border-blue-400"
+                  );
+                  link.classList.remove("text-gray-300");
+                } else if (!link.classList.contains("bg-yellow-400")) {
+                  link.classList.remove(
+                    "text-blue-400",
+                    "border-b",
+                    "border-blue-400"
+                  );
+                  link.classList.add("text-gray-300");
+                }
+              });
+            }
+          });
+        }
+
+        window.addEventListener("scroll", highlightNavOnScroll);
+
+        // 2. CATEGORY FILTERING
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const projectCards = document.querySelectorAll(".project-card");
+        const noProjectsNotice = document.getElementById("no-projects-notice");
+
+        if (filterBtns.length > 0) {
+          filterBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+              // Update button active states
+              filterBtns.forEach((b) => {
+                b.classList.remove(
+                  "active",
+                  "bg-yellow-400",
+                  "text-gray-950",
+                  "border-yellow-400"
+                );
+                b.classList.add(
+                  "bg-[#121c3b]",
+                  "text-gray-300",
+                  "border-white/20"
+                );
+              });
+
+              btn.classList.add(
+                "active",
+                "bg-yellow-400",
+                "text-gray-950",
+                "border-yellow-400"
+              );
+              btn.classList.remove(
+                "bg-[#121c3b]",
+                "text-gray-300",
+                "border-white/20"
+              );
+
+              const filterValue = btn.getAttribute("data-filter");
+              let visibleCount = 0;
+
+              // Filter logic
+              projectCards.forEach((card) => {
+                const cardCategory = card.getAttribute("data-category");
+
+                if (filterValue === "all" || filterValue === cardCategory) {
+                  card.style.display = "flex";
+                  visibleCount++;
+                } else {
+                  card.style.display = "none";
+                }
+              });
+
+              // Toggle Empty State Notice
+              if (noProjectsNotice) {
+                if (visibleCount === 0) {
+                  noProjectsNotice.classList.remove("hidden");
+                  noProjectsNotice.classList.add("flex");
+                } else {
+                  noProjectsNotice.classList.add("hidden");
+                  noProjectsNotice.classList.remove("flex");
+                }
+              }
+            });
+          });
+        }
+      });
+
+      // 3. TYPING EFFECT (Alpine.js Component)
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("typingEffect", () => ({
+          words: ["Full-Stack Web Developer", "System Architect"],
+          text: "",
+          wordIndex: 0,
+          charIndex: 0,
+          isDeleting: false,
+          typeSpeed: 100,
+
+          init() {
+            this.startTyping();
+          },
+
+          startTyping() {
+            const currentWord = this.words[this.wordIndex];
+
+            if (this.isDeleting) {
+              this.text = currentWord.substring(0, this.charIndex - 1);
+              this.charIndex--;
+              this.typeSpeed = 50;
+            } else {
+              this.text = currentWord.substring(0, this.charIndex + 1);
+              this.charIndex++;
+              this.typeSpeed = 100;
+            }
+
+            if (!this.isDeleting && this.charIndex === currentWord.length) {
+              this.typeSpeed = 2000; // Jeda saat kata selesai diketik
+              this.isDeleting = true;
+            } else if (this.isDeleting && this.charIndex === 0) {
+              this.isDeleting = false;
+              this.wordIndex = (this.wordIndex + 1) % this.words.length;
+              this.typeSpeed = 500; // Jeda sebelum mengetik kata berikutnya
+            }
+
+            setTimeout(() => this.startTyping(), this.typeSpeed);
+          },
+        }));
+      });
+    </script>
+  </body>
+</html>
